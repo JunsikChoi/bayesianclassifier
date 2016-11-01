@@ -12,8 +12,12 @@ trn_label = f_trans[-1,:]
 trn_data_matrix = np.asmatrix(trn_data.T)
 
 # Making mean vector
+
+#처음 만든 mean vector 코드
 '''
-print trn_data_matrix.T.shape
+sum = 0
+mean_vector = np.array([])
+
 for j in range(len(trn_data[:,0])):
     for i in range(len(trn_data[j, :])):
         sum += (trn_data[j, i])
@@ -21,27 +25,25 @@ for j in range(len(trn_data[:,0])):
     mean_vector = np.append(mean_vector,mean)
 print mean_vector
 '''
+
+#두 번째 mean vector 코드
+
 d,N = trn_data_matrix.T.shape
 sum = 0
 mean_vector = np.array([])
+
 for j in range(d):
     for i in range(N):
         sum += (trn_data_matrix.T[j, i])
     mean = sum / N
     mean_vector = np.append(mean_vector,mean)
 print mean_vector
+
 # Making Covariance Matrix
 
-#print "See"
-#print trn_data_matrix
-#print trn_data_matrix.T
 cov_matrix = np.cov(trn_data_matrix.T)
-#print cov_matrix
-#print cov_matrix.shape
-#print trn_data_matrix.shape
-#print trn_data_matrix[1,:]
-#print trn_data[0,:][0]
-#print len(trn_data[:,0])
+
+#cov 만들려는 시도 1
 '''
 for j in range(len(trn_data[:,0])): #13
     dev_sum = 0.
@@ -49,6 +51,7 @@ for j in range(len(trn_data[:,0])): #13
         dev_sum += (trn_data[j.:][i] - mean_vector[j])**2
     var = dev_sum/float(i+1)
 '''
+#cov matrix 만들려는 시도 2 (너무 brute force)
 '''
 cov_matrix = np.array([])
 dev_sum = 0
