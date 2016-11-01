@@ -3,6 +3,7 @@ import numpy as np
 # Read data from trn.txt
 
 f = np.loadtxt('C:/Users/leich/PycharmProjects/bayesianclassifier/data/trn.txt')
+print f
 f_trans = f.T
 trn_data = f_trans[0:len(f_trans)-1,:]
 trn_label = f_trans[-1,:]
@@ -13,7 +14,7 @@ trn_data_matrix = np.asmatrix(trn_data.T)
 
 # Making mean vector
 
-#처음 만든 mean vector 코드
+# first mean vector trial
 '''
 sum = 0
 mean_vector = np.array([])
@@ -26,7 +27,7 @@ for j in range(len(trn_data[:,0])):
 print mean_vector
 '''
 
-#두 번째 mean vector 코드
+#2nd mean vector trial
 
 d,N = trn_data_matrix.T.shape
 sum = 0
@@ -43,7 +44,7 @@ print mean_vector
 
 cov_matrix = np.cov(trn_data_matrix.T)
 
-#cov 만들려는 시도 1
+#cov trial 1
 '''
 for j in range(len(trn_data[:,0])): #13
     dev_sum = 0.
@@ -51,7 +52,7 @@ for j in range(len(trn_data[:,0])): #13
         dev_sum += (trn_data[j.:][i] - mean_vector[j])**2
     var = dev_sum/float(i+1)
 '''
-#cov matrix 만들려는 시도 2 (너무 brute force)
+#cov matrix trial 2 (too brute force)
 '''
 cov_matrix = np.array([])
 dev_sum = 0
