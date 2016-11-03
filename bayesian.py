@@ -2,7 +2,7 @@ import numpy as np
 
 # Read data from trn.txt
 
-f = np.loadtxt('C:/Users/leich/PycharmProjects/bayesianclassifier/data/trn.txt')
+f = np.loadtxt('/home/jun/PycharmProjects/bayesianclassifier/data/trn.txt')
 print f
 f_trans = f.T
 trn_data = f_trans[0:len(f_trans)-1,:]
@@ -27,7 +27,7 @@ for j in range(len(trn_data[:,0])):
 print mean_vector
 '''
 
-#2nd mean vector trial
+#2nd sample mean vector (m) trial
 
 d,N = trn_data_matrix.T.shape
 sum = 0
@@ -40,9 +40,11 @@ for j in range(d):
     mean_vector = np.append(mean_vector,mean)
 print mean_vector
 
-# Making Covariance Matrix
+# Making sample Covariance Matrix(S)
 
 cov_matrix = np.cov(trn_data_matrix.T)
+print cov_matrix.shape
+
 
 #cov trial 1
 '''
